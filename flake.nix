@@ -10,8 +10,8 @@
 			};
 		};
 	};
-	
-	outputs = { nixpkgs, hjem,  ... } @ inputs: let
+
+	outputs = { nixpkgs, hjem, ... } @ inputs: let
 		system = "x86_64-linux";
 	in {
 		nixosConfigurations.zenbook = nixpkgs.lib.nixosSystem {
@@ -23,9 +23,8 @@
 			specialArgs = {inherit inputs;};
 			modules = [
 				./configuration.nix
+				./overlays/default.nix
 				hjem.nixosModules.default
-				./wlroots.nix
-				./xwayland.nix
 			];
 		};
 		formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;

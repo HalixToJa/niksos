@@ -1,7 +1,7 @@
-{...}: {
+{
   imports = [
-    ./mangowc.nix
-    ./noctalia.nix
-    ./scaling.nix
+    ./desktop
+    ./programs
+    ./services
   ];
 }

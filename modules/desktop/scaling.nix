@@ -1,4 +1,4 @@
-_: {
+{
   hjem.users.halix = {
     files.".config/.Xresources".text = ''
       Xft.dpi: 196

@@ -1,0 +1,3 @@
+{
+   services.tuned.enable = true;
+}

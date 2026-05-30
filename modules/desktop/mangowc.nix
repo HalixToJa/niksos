@@ -1,11 +1,16 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  ...
+}:
+
+{
   hjem.users.halix = {
     packages = [pkgs.mangowc pkgs.xprop pkgs.xrdb];
     files.".config/mango/config.conf".text = ''
     # Xorg scaling fix
     exec-once=xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
     exec-once=xrdb ~/.config/.Xresources
-    
+
 
     exec-once=noctalia-shell
 
@@ -152,6 +157,12 @@
     bind=SUPER,space,spawn,noctalia-shell ipc call launcher toggle
     bind=SUPER,s,spawn,noctalia-shell ipc call sessionMenu toggle
     bind=SUPER,comma,spawn,noctalia-shell ipc call settings toggle
+
+    bind=NONE,XF86AudioRaiseVolume,spawn,noctalia-shell ipc call volume increase
+    bind=NONE,XF86AudioLowerVolume,spawn,noctalia-shell ipc call volume decrease
+    bind=NONE,XF86AudioMute,spawn,noctalia-shell ipc call volume muteOutput
+    bind=NONE,XF86MonBrightnessUp,spawn,noctalia-shell ipc call brightness increase
+    bind=NONE,XF86MonBrightnessDown,spawn,noctalia-shell ipc call brightness decrease
 
     # switch window focus
     bind=SUPER,Tab,focusstack,next
