@@ -1,0 +1,11 @@
+*
+!/**/
+
+!/hosts/**/*.nix
+!/modules/**/*.nix
+!/overlays/**/*.{nix,patch}
+
+!/flake.{nix,lock}
+!/.gitignore
+!/LICENSE
+!/README.md
