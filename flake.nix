@@ -10,10 +10,10 @@
 			};
 		};
 
-		chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"
+		chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 	};
 
-	outputs = { nixpkgs, hjem, ... } @ inputs: let
+	outputs = { nixpkgs, hjem, chaotic, ... } @ inputs: let
 		system = "x86_64-linux";
 	in {
 		nixosConfigurations.zenbook = nixpkgs.lib.nixosSystem {
