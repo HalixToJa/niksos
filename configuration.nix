@@ -25,6 +25,7 @@
     firefox
     zed-editor
     kdePackages.dolphin
+    sbctl
   ];
 
   fonts.packages = with pkgs; [
