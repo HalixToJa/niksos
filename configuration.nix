@@ -12,6 +12,8 @@
     ./hjem.nix
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto-znver4;
+
   time.timeZone = "Europe/Warsaw";
 
   i18n.defaultLocale = "pl_PL.UTF-8";

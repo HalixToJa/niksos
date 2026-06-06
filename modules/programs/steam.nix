@@ -11,6 +11,7 @@
     gamescopeSession.enable = true;
     extraCompatPackages = with pkgs; [
       steamtinkerlaunch
+      proton-cachyos_x86_64_v4
     ];
   };
 
