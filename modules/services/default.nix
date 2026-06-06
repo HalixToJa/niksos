@@ -1,5 +1,6 @@
 {
   imports = [
+    ./asusd.nix
     ./bluetooth.nix
     ./dbus.nix
     ./mtp.nix
