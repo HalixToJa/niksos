@@ -6,6 +6,8 @@
 !/overlays/**/*.{nix,patch}
 
 !/flake.{nix,lock}
+!/configuration.nix
+!/hjem.nix
 !/.gitignore
 !/LICENSE
 !/README.md
