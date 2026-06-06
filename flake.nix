@@ -10,10 +10,20 @@
 			};
 		};
 
+		mangowm = {
+      url = "github:mangowm/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    noctalia = {
+    	url = "github:noctalia-dev/noctalia-shell/v5";
+    	inputs.nixpkgs.follows = "nixpkgs";
+    };
+
 		chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 	};
 
-	outputs = { nixpkgs, hjem, chaotic, ... } @ inputs: let
+	outputs = { nixpkgs, hjem, chaotic, mangowm, ... } @ inputs: let
 		system = "x86_64-linux";
 	in {
 		nixosConfigurations.zenbook = nixpkgs.lib.nixosSystem {
@@ -30,6 +40,7 @@
 				chaotic.nixosModules.nyx-cache
         chaotic.nixosModules.nyx-overlay
         chaotic.nixosModules.nyx-registry
+        mangowm.nixosModules.mango
 			];
 		};
 		formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;

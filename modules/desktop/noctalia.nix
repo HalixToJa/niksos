@@ -1,10 +1,11 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 
 {
   hjem.users.halix = {
-    packages = [ pkgs.noctalia-shell ];
+    packages = [ inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default ];
   };
 }

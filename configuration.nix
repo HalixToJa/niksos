@@ -26,6 +26,7 @@
     zed-editor
     kdePackages.dolphin
     sbctl
+    btop
   ];
 
   fonts.packages = with pkgs; [

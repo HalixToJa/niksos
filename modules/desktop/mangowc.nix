@@ -4,15 +4,16 @@
 }:
 
 {
+  programs.mango.enable = true;
   hjem.users.halix = {
-    packages = [pkgs.mangowc pkgs.xprop pkgs.xrdb pkgs.grim pkgs.slurp pkgs.wl-clipboard pkgs.wayfreeze ];
+    packages = [ pkgs.xprop pkgs.xrdb pkgs.grim pkgs.slurp pkgs.wl-clipboard pkgs.wayfreeze ];
     files.".config/mango/config.conf".text = ''
     # Xorg scaling fix
-    exec-once=xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
-    exec-once=xrdb ~/.config/.Xresources
+    # exec-once=xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
+    # exec-once=xrdb ~/.config/.Xresources
 
 
-    exec-once=noctalia-shell
+    exec-once=noctalia
 
     monitorrule=name:^eDP-1$,width:2880,height:1800,refresh:120,vrr:1,scale:1.75
 
@@ -135,38 +136,36 @@
 
     # layout support:
     # tile,scroller,grid,deck,monocle,center_tile,vertical_tile,vertical_scroller
-    tagrule=id:1,layout_name:tile
-    tagrule=id:2,layout_name:tile
-    tagrule=id:3,layout_name:tile
-    tagrule=id:4,layout_name:tile
-    tagrule=id:5,layout_name:tile
-    tagrule=id:6,layout_name:tile
-    tagrule=id:7,layout_name:tile
-    tagrule=id:8,layout_name:tile
-    tagrule=id:9,layout_name:tile
+    tagrule=id:1,layout_name:dwindle
+    tagrule=id:2,layout_name:dwindle
+    tagrule=id:3,layout_name:dwindle
+    tagrule=id:4,layout_name:dwindle
+    tagrule=id:5,layout_name:dwindle
+    tagrule=id:6,layout_name:dwindle
+    tagrule=id:7,layout_name:dwindle
+    tagrule=id:8,layout_name:dwindle
+    tagrule=id:9,layout_name:dwindle
 
     # Key Bindings
     # key name refer to `xev` or `wev` command output,
     # mod keys name: super,ctrl,alt,shift,none
 
-    bind=NONE,Print,spawn,$HOME/.config/mango/screenshot/screenshot.sh fullscreen
-    bind=SHIFT,Print,spawn,$HOME/.config/mango/screenshot/screenshot.sh region
-    bind=SHIFT+SUPER,Print,spawn,$HOME/.config/mango/screenshot/screenshot.sh freeze-region
+    bind=SHIFT+SUPER,s,spawn,noctalia msg screenshot-region
+    bind=NONE,Print,spawn,noctalia msg screenshot-fullscreen
 
     bind=SUPER,Return,spawn,ghostty
     bind=SUPER,r,reload_config
     bind=SUPER+SHIFT,e,quit
     bind=SUPER,q,killclient
 
-    bind=SUPER,space,spawn,noctalia-shell ipc call launcher toggle
-    bind=SUPER,s,spawn,noctalia-shell ipc call sessionMenu toggle
-    bind=SUPER,comma,spawn,noctalia-shell ipc call settings toggle
+    bind=SUPER,space,spawn,noctalia msg panel-open launcher
+    bind=SUPER,s,spawn,noctalia msg panel-open session
 
-    bind=NONE,XF86AudioRaiseVolume,spawn,noctalia-shell ipc call volume increase
-    bind=NONE,XF86AudioLowerVolume,spawn,noctalia-shell ipc call volume decrease
-    bind=NONE,XF86AudioMute,spawn,noctalia-shell ipc call volume muteOutput
-    bind=NONE,XF86MonBrightnessUp,spawn,noctalia-shell ipc call brightness increase
-    bind=NONE,XF86MonBrightnessDown,spawn,noctalia-shell ipc call brightness decrease
+    bind=NONE,XF86AudioRaiseVolume,spawn,noctalia msg volume-up 5
+    bind=NONE,XF86AudioLowerVolume,spawn,noctalia msg volume-down 5
+    bind=NONE,XF86AudioMute,spawn,noctalia msg volume-mute
+    bind=NONE,XF86MonBrightnessUp,spawn,noctalia msg brightness-up 5
+    bind=NONE,XF86MonBrightnessDown,spawn,noctalia msg brightness-down 5
 
     # switch window focus
     bind=SUPER,Tab,focusstack,next
@@ -232,11 +231,6 @@
     # Axis Bindings
     axisbind=SUPER,UP,viewtoleft_have_client
     axisbind=SUPER,DOWN,viewtoright_have_client
-
-
-    # layer rule
-    layerrule=animation_type_open:zoom,layer_name:rofi
-    layerrule=animation_type_close:zoom,layer_name:rofi
     '';
   };
 }
