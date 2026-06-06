@@ -34,6 +34,8 @@
     enable32Bit = true;
   };
 
+  services.openssh.enable = true;
+
   services.xserver.videoDrivers = [ "amdgpu" ];
 
   zramSwap = {

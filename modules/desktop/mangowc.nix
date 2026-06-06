@@ -5,7 +5,7 @@
 
 {
   hjem.users.halix = {
-    packages = [pkgs.mangowc pkgs.xprop pkgs.xrdb];
+    packages = [pkgs.mangowc pkgs.xprop pkgs.xrdb pkgs.grim pkgs.slurp pkgs.wl-clipboard pkgs.wayfreeze ];
     files.".config/mango/config.conf".text = ''
     # Xorg scaling fix
     exec-once=xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
@@ -148,6 +148,10 @@
     # Key Bindings
     # key name refer to `xev` or `wev` command output,
     # mod keys name: super,ctrl,alt,shift,none
+
+    bind=NONE,Print,spawn,$HOME/.config/mango/screenshot/screenshot.sh fullscreen
+    bind=SHIFT,Print,spawn,$HOME/.config/mango/screenshot/screenshot.sh region
+    bind=SHIFT+SUPER,Print,spawn,$HOME/.config/mango/screenshot/screenshot.sh freeze-region
 
     bind=SUPER,Return,spawn,ghostty
     bind=SUPER,r,reload_config

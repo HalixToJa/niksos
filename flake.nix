@@ -9,6 +9,8 @@
 				nixpkgs.follows = "nixpkgs";
 			};
 		};
+
+		chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"
 	};
 
 	outputs = { nixpkgs, hjem, ... } @ inputs: let
@@ -25,6 +27,9 @@
 				./configuration.nix
 				./overlays/default.nix
 				hjem.nixosModules.default
+				chaotic.nixosModules.nyx-cache
+        chaotic.nixosModules.nyx-overlay
+        chaotic.nixosModules.nyx-registry
 			];
 		};
 		formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
