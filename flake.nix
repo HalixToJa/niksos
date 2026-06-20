@@ -20,10 +20,15 @@
     	inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
 		chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 	};
 
-	outputs = { nixpkgs, hjem, chaotic, mangowm, ... } @ inputs: let
+	outputs = { nixpkgs, hjem, chaotic, mangowm, noctalia-greeter, ... } @ inputs: let
 		system = "x86_64-linux";
 	in {
 		nixosConfigurations.zenbook = nixpkgs.lib.nixosSystem {
@@ -41,6 +46,7 @@
         chaotic.nixosModules.nyx-overlay
         chaotic.nixosModules.nyx-registry
         mangowm.nixosModules.mango
+        noctalia-greeter.nixosModules.default
 			];
 		};
 		formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;

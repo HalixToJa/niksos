@@ -8,6 +8,7 @@
   imports = [
     ./mangowc.nix
     ./noctalia.nix
+    ./noctalia-greeter.nix
     ./scaling.nix
   ];
 }
